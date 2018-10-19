@@ -1,6 +1,8 @@
 const flatPlainObj = (originObj, keypathDelimiter = '.') => {
     if(typeof originObj !== 'object')
-        throw new Error("Bad parameter, the type of originObj should be a plain object")
+        throw new Error("Bad parameter, the type of originObj must be a plain object")
+    if(typeof keypathDelimiter !== 'string')
+        throw new Error("Bad parameter, the type of keypathDelimiter must be a string")
     let r = {}
     const path = ''
     if(JSON.stringify(originObj) !== '{}')
