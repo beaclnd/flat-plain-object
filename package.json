@@ -1,7 +1,7 @@
 {
   "name": "flat-plain-object",
-  "version": "1.0.0",
-  "description": "A simple tool to flat a plain object, and result a only one level object",
+  "version": "1.0.1",
+  "description": "A simple utility to flat a plain object, and result a only one level object",
   "main": "index.js",
   "repository": {
     "type": "git",
