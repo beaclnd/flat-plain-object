@@ -1,4 +1,5 @@
 import FlatPlainObj from '../index'
+//const FlatPlainObj = require('../index')
 
 test("flat a non-empty one level plain object, the result should be the same object", () => {
     const objOrigin = {a: 12, b: 34, c: "lkjh"}

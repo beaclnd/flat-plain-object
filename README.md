@@ -16,7 +16,7 @@ Import it as a function accepting two parameters.
 // es6 style
 import FlatPlainObj from 'flat-plain-object'
 /* or CommonJS style
-const FlatPlainObj = require('flat-plain-object').default
+const FlatPlainObj = require('flat-plain-object')
 */
 let objFlatten = FlatPlainObj(objOrigin, '.')
 ```

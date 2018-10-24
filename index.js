@@ -23,4 +23,4 @@ const flatting = (obj, path, r, delimiter) => {
     } 
 }
 
-export default flatPlainObj
+module.exports = flatPlainObj
