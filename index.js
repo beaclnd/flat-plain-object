@@ -1,24 +1,32 @@
-const flatPlainObj = (originObj, keypathDelimiter = '.') => {
+const flatPlainObj = (originObj, argOptions) => {
+    const options = argOptions || {} 
+    const keypathDelimiter = options.delimiter || '.'
+    const flatArrayFlag = options.flatArrayFlag || false
+
     if(typeof originObj !== 'object')
-        throw new Error("Bad parameter, the type of originObj must be a plain object")
+        throw new Error("Bad parameter, the originObj must be a plain object")
     if(typeof keypathDelimiter !== 'string')
-        throw new Error("Bad parameter, the type of keypathDelimiter must be a string")
+        throw new Error("Bad parameter, the delimiter must be a string")
+    if(typeof flatArrayFlag !== 'boolean')
+        throw new Error("Bad parameter, the flatArrayFlag must be a boolean value")
+
     let r = {}
     const path = ''
     if(JSON.stringify(originObj) !== '{}')
-        flatting(originObj, path, r, keypathDelimiter)
+        flatting(originObj, path, r, keypathDelimiter, flatArrayFlag)
     return r
 }
 
-const flatting = (obj, path, r, delimiter) => {
-    if(typeof obj !== 'object' || (typeof obj === 'object' && JSON.stringify(obj) === '{}')){
+const flatting = (obj, path, r, delimiter, flatArrayFlag) => {
+    if(typeof obj !== 'object' || (typeof obj === 'object' && JSON.stringify(obj) === '{}')
+        || (!flatArrayFlag && (obj instanceof Array))){
         path = path.slice(1)
         r[path] = obj
     }
     else{
         const keys = Object.keys(obj)
         for(let i of keys){
-            flatting(obj[i], path+delimiter+i, r, delimiter)
+            flatting(obj[i], path+delimiter+i, r, delimiter, flatArrayFlag)
         }
     } 
 }

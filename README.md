@@ -1,5 +1,5 @@
 # Flat-Plain-Object
-A very simple utility for the purpose of flatting a plain object which is constituted by nested objects.
+A very simple utility for the purpose of flatting a plain object which is constituted by nested object(s).
 
 ## Install
 In node environment, install it with npm:
@@ -18,10 +18,14 @@ import FlatPlainObj from 'flat-plain-object'
 /* or CommonJS style
 const FlatPlainObj = require('flat-plain-object')
 */
-let objFlatten = FlatPlainObj(objOrigin, '.')
+let objFlatted = FlatPlainObj(objOrigin, '.')
 ```
-The 1st parameter is your nested plain object variable,
-and the 2nd one is a delimiter(the default is '.') for keypath.
+
+### FlatPlainObj(objOrigin, options)
+- **objOrigin**, your origin plain object needs to be flatted
+- **options**, a parameter object accepting 2 properties: **delimiter** and **flatArrayFlag**
+  + **delimiter**, the delimiter for a flatted key path, the default is **\'.\'**
+  + **flatArrayFlag**, the bool variable to control whether to flat array, the default value is **false**
 
 ## Sample
 ```javascript
@@ -36,9 +40,9 @@ let objOrigin = {
     d: {d1: {d11: {d111: 56}, d12: 'he'}}
 }
 
-let objFlatten = FlatPlainObj(objOrigin)
+let objFlatted = FlatPlainObj(objOrigin)
 /*
-objFlatten represented as
+objFlatted represented as
 {
     a: 12,
     b: 'hello world!',
@@ -46,6 +50,33 @@ objFlatten represented as
     'c.c2': '!dlrow olleh',
     'd.d1.d11.d111': 56,
     'd.d1.d12': 'he'
+}
+*/
+
+objOrigin = {
+    a: 12,
+    b: 'hello world!',
+    c: [1, 2, 3],
+}
+objFlatted = FlatPlainObj(objOrigin)
+/*
+objFlatted represented as
+{
+    a: 12,
+    b, 'hello world!',
+    c: [1, 2, 3],
+}
+*/
+
+objFlatted = FlatPlainObj(objOrigin, {flatArrayFlag: true})
+/*
+objFlatted represented as
+{
+    a: 12,
+    b, 'hello world!',
+    'c.0': 1,
+    'c.1': 2,
+    'c.2': 3,
 }
 */
 ```
