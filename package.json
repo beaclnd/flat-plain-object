@@ -1,6 +1,6 @@
 {
   "name": "flat-plain-object",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple utility to flat a plain object, and result a only one level object",
   "keywords": [
     "flat",

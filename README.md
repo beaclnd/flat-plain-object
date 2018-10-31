@@ -18,14 +18,15 @@ import FlatPlainObj from 'flat-plain-object'
 /* or CommonJS style
 const FlatPlainObj = require('flat-plain-object')
 */
-let objFlatted = FlatPlainObj(objOrigin, '.')
 ```
 
 ### FlatPlainObj(objOrigin, options)
-- **objOrigin**, your origin plain object needs to be flatted
-- **options**, a parameter object accepting 2 properties: **delimiter** and **flatArrayFlag**
-  + **delimiter**, the delimiter for a flatted key path, the default is **\'.\'**
-  + **flatArrayFlag**, the bool variable to control whether to flat array, the default value is **false**
+#### objOrigin
+Your origin plain object needs to be flatted.
+#### options
+A parameter object accepting 2 properties: **delimiter** and **flatArrayFlag**
++ **delimiter**, the delimiter for a flatted key path, the default is **\'.\'**
++ **flatArrayFlag**, the bool variable to control whether to flat array, the default value is **false**
 
 ## Sample
 ```javascript
