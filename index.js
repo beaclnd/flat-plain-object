@@ -1,4 +1,4 @@
-const flatPlainObj = (originObj, argOptions) => {
+const flatPlainObj = function(originObj, argOptions) {
     const options = argOptions || {} 
     const keypathDelimiter = options.delimiter || '.'
     const flatArrayFlag = options.flatArrayFlag || false
@@ -10,14 +10,14 @@ const flatPlainObj = (originObj, argOptions) => {
     if(typeof flatArrayFlag !== 'boolean')
         throw new Error("Bad parameter, the flatArrayFlag must be a boolean value")
 
-    let r = {}
+    var r = {}
     const path = ''
     if(JSON.stringify(originObj) !== '{}')
         flatting(originObj, path, r, keypathDelimiter, flatArrayFlag)
     return r
 }
 
-const flatting = (obj, path, r, delimiter, flatArrayFlag) => {
+const flatting = function(obj, path, r, delimiter, flatArrayFlag) {
     if(typeof obj !== 'object' || (typeof obj === 'object' && JSON.stringify(obj) === '{}')
         || (!flatArrayFlag && (obj instanceof Array))){
         path = path.slice(1)
@@ -25,8 +25,8 @@ const flatting = (obj, path, r, delimiter, flatArrayFlag) => {
     }
     else{
         const keys = Object.keys(obj)
-        for(let i of keys){
-            flatting(obj[i], path+delimiter+i, r, delimiter, flatArrayFlag)
+        for(var i = 0, len = keys.length; i < len; i++){
+            flatting(obj[keys[i]], path+delimiter+keys[i], r, delimiter, flatArrayFlag)
         }
     } 
 }
